@@ -89,20 +89,17 @@
  * Everything input with pull-up except:
  * PA2  - Alternate output  (USART2 TX).
  * PA3  - Normal input      (USART2 RX).
- * PA9  - Alternate output  (USART1 TX).
- * PA10 - Normal input      (USART1 RX).
  */
 #define VAL_GPIOACRL            0x88884B88      /*  PA7...PA0 */
-#define VAL_GPIOACRH            0x888884B8      /* PA15...PA8 */
+#define VAL_GPIOACRH            0x88888888      /* PA15...PA8 */
 #define VAL_GPIOAODR            0xFFFFFFFF
 
 /*
  * Port B setup.
  * Everything input with pull-up except:
- * PB10    - Push Pull output  (USB switch).
  */
 #define VAL_GPIOBCRL            0x88888888      /*  PB7...PB0 */
-#define VAL_GPIOBCRH            0x88888388      /* PB15...PB8 */
+#define VAL_GPIOBCRH            0x88888888      /* PB15...PB8 */
 #define VAL_GPIOBODR            0xFFFFFFFF
 
 /*

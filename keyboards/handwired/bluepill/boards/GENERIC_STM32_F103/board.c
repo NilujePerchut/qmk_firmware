@@ -46,4 +46,6 @@ void __early_init(void) {
  * Board-specific initialization code.
  */
 void boardInit(void) {
+  /* JTAG-DP Disabled and SW-DP Enabled (Needed to access B3) */
+  AFIO->MAPR |= AFIO_MAPR_SWJ_CFG_JTAGDISABLE;
 }
