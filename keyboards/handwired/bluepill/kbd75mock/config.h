@@ -23,3 +23,8 @@
 // Iso fix for Space Cadet, comment for ANSI layouts
 #define LSPO_KEY KC_8
 #define RSPC_KEY KC_9
+
+// RGB Matrix
+#define RGB_DI_PIN A0
+#define DRIVER_LED_TOTAL 85
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100

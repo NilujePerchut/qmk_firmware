@@ -26,6 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "util.h"
 #include "matrix.h"
 #include "wait.h"
+#include "rgb.h"
+#include "rgb_matrix_types.h"
 
 //#include "pwm.c"
 
@@ -42,6 +44,44 @@ static matrix_row_t read_cols(void);
 static void init_cols(void);
 static void unselect_rows(void);
 static void select_row(uint8_t row);
+
+const led_config_t g_led_config = { {
+	// Key Matrix to Led Index
+		{15 , 14 , 13 , 12 , 11 , 10 , 9 ,  8 ,  7 ,  6 ,  5 ,  4 ,  3 ,  2 ,  0},
+		{16 , 17 , 18 , 19 , 20 , 21 , 22 , 23 , 24 , 25 , 26 , 27 , 28 , 1  , 30},
+		{44 , 43 , 42 , 41 , 40 , 39 , 38 , 37 , 36 , 35 , 34 , 33 , 32 , 29 , 31},
+		{45 , 46 , 47 , 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 , 56 , 57 , 58 , 59},
+		{74 , 73 , 72 , 71 , 70 , 69 , 68 , 67 , 66 , 65 , 64 , 63 , 62 , 61 , 60},
+		{75 , 76 , 77 , NO_LED , NO_LED , NO_LED , 78 , NO_LED , NO_LED , 79 , 80 , 81 , 82 , 83 , 84},
+	}, {
+		// LED Index to Physical Position
+		// Delete, Pause, PrintScreen, F12, F11, F10, F9, F8, F7, F6, F5, F4, F3, F2, F1, Escape
+		{224, 0}, {210,0}, {195,0}, {180,0}, {165,0}, {150,0}, {135,0}, {120,0}, {105,0}, {90,0}, {75,0}, {60,0}, {45,0}, {30,0}, {15,0}, {0,0},
+
+		// Squared, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, Degree, Plus, Backspace, Home
+		{0,13}, {15,13}, {30,13}, {45,13}, {60,13}, {75,13}, {90,13}, {105,13}, {120,13}, {135,13}, {150,13}, {165,13}, {180, 13}, {201, 13}, {224,13},
+
+		// Page Up, Pound, Trema, P, O, I, U, Y, T, R, E, Z, A, Tab
+		{224,26}, {186,26}, {171,26}, {156,26}, {142,26}, {127,26}, {112,26}, {97,26}, {82,26}, {67,26}, {52,26}, {37,26}, {22, 26}, {4,26},
+
+		// Caps Lock, Q, S, D, F, G, H, J, K, L, M, Percent, Micro, Enter, Page Down
+		{6,38}, {26,38}, {41,38}, {56,38}, {71,38}, {86,38}, {101,38}, {115,38}, {130,38}, {145,38}, {160,38}, {175,38}, {190,38}, {209,26}, {224,38},
+
+		// End, Up, Right Shift, Paragraph, Slash, Dot, Question, N, B, V, C, X, W, Chevron, Left Shift
+		{224,51}, {210,51}, {188,51}, {168,51}, {153,51}, {138,51}, {123,51}, {108,51}, {93,51}, {78,51}, {63,51}, {48,51}, {33,51}, {19,51}, {2,51},
+
+		// Left Control, Win, Alt, Space, AltGr, Menu, Right Control, Left, Down, Right
+		{2,64}, {20,64}, {39,64}, {95,64}, {150,64}, {165,64}, {180,64}, {195,64}, {210,64}, {224,64},
+	}, {
+		// LED Index to Flag
+		1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+		1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+		1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+		1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+		1, 1, 1, 4, 1, 1, 1, 1, 1, 1,
+	}
+};
 
 inline uint8_t matrix_rows(void){
   return MATRIX_ROWS;
