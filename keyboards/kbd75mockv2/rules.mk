@@ -18,4 +18,6 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
-RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow (mutually exclusive with RGB_MATRIX)
+RGB_MATRIX_ENABLE = yes     # Enable RGB matrix
+RGB_MATRIX_DRIVER = WS2812  # Uses neopixels for RGB matrix

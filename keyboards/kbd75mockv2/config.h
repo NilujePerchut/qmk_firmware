@@ -47,11 +47,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-/* RGB LIGHT */
+#ifdef RGBLIGHT_ENABLE
 #define RGB_DI_PIN B4
 #define RGBLED_NUM 16
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_DISABLE_KEYCODES
+#endif
+
+#ifdef RGB_MATRIX_ENABLE
+#define RGB_DI_PIN B12
+#define DRIVER_LED_TOTAL 88
+#define RGB_MATRIX_DISABLE_KEYCODES
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+/* Max brightness is computed for 12mA LEDs (use 96 for 5mA) */
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100
+#endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
