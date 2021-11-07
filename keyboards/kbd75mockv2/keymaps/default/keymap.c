@@ -20,6 +20,7 @@
 
 enum layer_names {
 	_BASE = 0,
+	_MOUSE,
 #ifdef RGBLIGHT_ENABLE
 	_RGBLIGHTING,
 #endif
@@ -70,6 +71,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_CAPS, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT, KC_NUHS,  KC_ENT,     KC_PGDOWN,
  KC_LSHIFT, KC_NUBS,KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, KC_RSHIFT,KC_UP,      KC_END,
    KC_LCTL, KC_LGUI,KC_LALT,KC_NO,  KC_NO,  KC_NO,  KC_SPC, KC_NO,  KC_NO,  KC_RALT,TO(_BASE+1),   KC_RCTL, KC_LEFT, KC_DOWN,    KC_RIGHT),
+    [_MOUSE] = LAYOUT(
+     TO(0), KC_MPRV,    KC_MSTP,    KC_MPLY,     KC_NO,  KC_NO,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_NO,   KC_NO,        KC_NO,  KC_NO,        KC_NO,        KC_NO,
+     KC_NO, KC_NO,      KC_NO,      KC_NO,       KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,        KC_NO,  KC_NO,        KC_NO,        KC_NO,
+     KC_NO, KC_NO,      KC_MS_UP,   KC_NO,       KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,        KC_NO,  KC_NO,        KC_NO,        KC_MS_WH_UP,
+     KC_NO, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, KC_NO,  KC_NO,  KC_NO,    KC_BTN1,  KC_BTN2,  KC_BTN3, KC_NO,        KC_NO,  KC_NO,        KC_NO,        KC_MS_WH_DOWN,
+     KC_NO, KC_NO,      KC_NO,      KC_NO,       KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,        KC_NO,  KC_NO,        KC_NO,        KC_NO,
+     KC_NO, KC_NO,      KC_NO,      KC_NO,       KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,   TO(_MOUSE+1), KC_NO,  KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2),
 #ifdef RGBLIGHT_ENABLE
     [_RGBLIGHTING] = LAYOUT(
           TO(0), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGBLIGHT_TOGGLE,
