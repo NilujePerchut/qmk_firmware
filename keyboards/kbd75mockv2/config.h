@@ -48,10 +48,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 
 #ifdef RGBLIGHT_ENABLE
-#define RGB_DI_PIN B4
+#define RGBLIGHT_DI_PIN B4
 #define RGBLED_NUM 16
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_DISABLE_KEYCODES
+#define RGBLIGHT_LIMIT_VAL 255
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
