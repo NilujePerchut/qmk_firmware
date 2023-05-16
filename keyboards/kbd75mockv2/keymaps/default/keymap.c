@@ -59,6 +59,8 @@ enum custom_keycodes {
 	RGB_MATRIX_DECREASE_SAT,
 	RGB_MATRIX_INCREASE_VAL,
 	RGB_MATRIX_DECREASE_VAL,
+	RGB_MATRIX_INCREASE_SPD,
+	RGB_MATRIX_DECREASE_SPD,
 #endif
 };
 
@@ -90,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef RGB_MATRIX_ENABLE
     [_RGB_MATRIX] = LAYOUT(
           TO(0), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_TOGGLE,
-          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_DECREASE_SPD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_INCREASE_SPD, KC_NO, KC_NO,
   RGB_MATRIX_MODE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_INCREASE_VAL,
           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_DECREASE_VAL,
           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_MATRIX_INCREASE_HUE, KC_NO,
@@ -181,6 +183,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case RGB_MATRIX_DECREASE_VAL:
 			if (record->event.pressed)
 				rgb_matrix_increase_val();
+			return false;
+		case RGB_MATRIX_INCREASE_SPD:
+			if (record->event.pressed)
+				rgb_matrix_increase_speed();
+			return false;
+		case RGB_MATRIX_DECREASE_SPD:
+			if (record->event.pressed)
+				rgb_matrix_increase_speed();
 			return false;
 #endif
 	}
